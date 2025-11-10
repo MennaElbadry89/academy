@@ -44,7 +44,7 @@ const cards = [
 ]
     return(
         <>
-        <div className="@container Track px-20 my-0 bg-gray-200">
+        <div className="max-md:px-10 Track px-20 my-0 bg-gray-200">
             <h1 className="text-amber-500 m-5 p-5 text-5xl font-semibold"> Available Tracks : </h1>
        <Swiper
         slidesPerView={3}
@@ -79,7 +79,7 @@ const cards = [
       >
         {cards.map((card) => (
           <SwiperSlide key={card.id}>
-            <div className="max-w-sm rounded-xl overflow-hidden shadow-lg bg-white my-10">
+            <div className="max-w-sm rounded-xl overflow-hidden shadow-lg bg-white my-10 mx-auto">
               <img className="w-full" src={card.imag} alt={card.title}/>
               <div className="px-6 py-4">
                 <div className="font-bold text-amber-500 text-xl mb-2">{card.title}</div>

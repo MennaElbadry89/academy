@@ -24,7 +24,7 @@ export default function Home(){
 
     return(
     <>
-        <section className="@container relative px-20 bg-[url('/images/206.jpg')] bg-cover bg-center h-100 ">
+        <section className="max-md:px-10  relative px-20 bg-[url('/images/206.jpg')] bg-cover bg-center h-100 ">
         <div className="absolute inset-0 bg-black/50 ">
             <h1 className= "typewriter text-amber-500 text-8xl font-bold py-25 max-md:text-3xl " > Learn, Build, Grow</h1>
         </div>

@@ -33,7 +33,7 @@ if (selected) {
         else{
             return(
                 <>
-                <div className="Profile container mx-5 p-5 my-15">
+                <div className="Profile container mx-10 p-5 my-15">
                    <p className='text-center text-2xl text-blue-950 font-semibold my-5' >Your <span className='text-amber-500 '>profile</span></p>
                    <p className='my-3 font-semibold text-blue-950'>First Name : <span className='text-amber-500 '>{currentUser?.firstname}</span></p>
                    <p className='my-3 font-semibold text-blue-950'>Last Name : <span className='text-amber-500 '>{currentUser?.lastname}</span></p>

@@ -46,7 +46,7 @@ export default function Team() {
   }
 
   return (
-    <div className="bg-gray-200 py-10 sm:py-20 max-md:px-20">
+    <div className="bg-gray-200 py-10  max-md:px-10">
       <div className="mx-auto grid max-w-7xl gap-20 px-6 lg:px-8 xl:grid-cols-3">
         <div className="max-w-xl">
           <h2 className="text-2xl font-semibold tracking-tight text-pretty text-amber-500 sm:text-4xl ">

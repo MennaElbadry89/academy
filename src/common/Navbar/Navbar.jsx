@@ -46,7 +46,7 @@ if (selected) {
 
 return(
     <>
-    <nav className="px-5 py-2  bg-gray-900 shadow-lg flex justify-between sm:items-center z-100 relative">
+    <nav className="px-5 py-2  bg-gray-900 shadow-lg flex justify-between md:items-center z-100 relative">
         <div className="text-xl text-amber-500 text-shadow-lg pr-5 ">
             <a href="/"><img src={logo} width={40} height={40} alt="" /></a>
         </div>          
@@ -119,7 +119,7 @@ return(
     </div>
       <div>
           <button  onClick={(()=> setIsOpen(!isOpen))} >
-          <IoMdMenu className="hidden max-sm:flex text-4xl text-amber-700 hover:text-amber-500 cursor-pointer"/></button>   
+          <IoMdMenu className="hidden max-md:flex text-4xl text-amber-700 hover:text-amber-500 cursor-pointer"/></button>   
        </div>    
    
 </nav>
