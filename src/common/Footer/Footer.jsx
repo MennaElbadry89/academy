@@ -15,12 +15,12 @@ export default function Footer(){
 
     return(
         <>
-        <div className="Footer static bottom-0 left-0 w-full  my-auto bg-gray-900 p-2">
-        <div className=" flex mx-auto w-full max-md:flex-col max-md:items-center justify-center">
-                        <div className="intouch w-full sm:w-full max-sm:pl-10 lg:w-1/3 pl-25 my-5">
+        <div className="Footer static bottom-0 left-0 w-full  my-auto bg-gray-900 px-20 max-md:px-10">
+        <div className=" flex mx-auto w-full max-md:flex-col max-md:items-center max-md:justify-center mb-5">
+                    <div className="intouch w-full sm:w-full lg:w-1/3  my-5">
                              <a href="/"> <img src={logo} className="w-20 h-20" alt="" /></a>                        
                         </div>
-                    <div className="media w-full sm:w-full lg:w-1/3 px-5 mt-5">
+                    <div className="media w-full sm:w-full lg:w-1/3  mt-5">
                                     <b className="text-amber-500 text-xl text-center">Shop Media </b>
                                     <ul className="flex gap-5 text-2xl mt-4">
                                         <li className="cursor-pointer text-amber-500 hover:text-amber-300"><TiSocialFacebook /></li>
@@ -29,18 +29,18 @@ export default function Footer(){
                                         <li className="cursor-pointer text-amber-500 hover:text-amber-300"><FaLinkedin /></li>
                                         <li className="cursor-pointer text-amber-500 hover:text-amber-300"><FaGithub /></li>
                                     </ul>
-                                  </div>       
+                    </div>       
                 
-                    <div className="Login w-full sm:w-full  lg:w-1/3 pr-25">
+                    <div className="Login w-full sm:w-full  lg:w-1/3 ">
                             {/* <b className="text-amber-500">Choose your country</b> */}
                             <Options />
-                          </div>        
+                    </div>        
          </div>  
             <hr className= "flex  items-center justify-center text-amber-300" />
           
-                    <div className="flex justify-between py-5 px-25 w-full mr-0 max-md:flex-col max-md:items-center max-md:gap-4">
+                    <div className="flex justify-between py-5 px-20 w-full mr-0 max-md:flex-col max-md:items-center max-md:gap-4">
                     <p className="text-white max-md:text-sm"> Copywrite @ <a className="text-amber-500 hover:text-amber-300" href="https://www.linkedin.com/in/menna-elbadry21/">Menna Elbadry</a> </p>
-                    <img src={visa} className="w-1/4 " alt="" />
+                    <img src={visa} className="w-1/4 max-md:w-full " alt="" />
                     </div>   
 </div>
 </>

@@ -40,12 +40,12 @@ export default function KeenSlider(){
         }
         }, [instanceRef]);
     return(
-        <div className="flex justify-center items-center px-10 max-md:pr-0">
+        <div className="flex justify-center items-center ">
             <div>
                 <div ref={sliderRef} className="keen-slider h-[400px] w-72">
                        {images.map((src, index) => (
                         <div key={index} className="keen-slider__slide flex justify-center items-center">
-                        <img  src={src} alt={`Image ${index + 1}`} className="w-full h-full object-cover rounded-lg " />
+                        <img  src={src} alt={`Image ${index + 1}`} className="w-full h-full object-cover border border-amber-500 rounded-lg " />
                         </div>
                     ))}
                 </div>

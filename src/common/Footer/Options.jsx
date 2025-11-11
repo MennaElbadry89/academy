@@ -19,7 +19,7 @@ export default function Options(){
     }
 
  return (
-    <section className="@container mx-auto px-4">
+    <section className="@container mx-auto ">
         <label htmlFor="country" className="block text-xl text-amber-500 mt-5"> <b>Select your country</b></label>
         <div className="relative mx-auto mt-4 w-full">
             <input type="text" placeholder="select ur country" name="country"

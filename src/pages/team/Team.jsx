@@ -70,7 +70,7 @@ export default function Team() {
                
                   { open && selectedPerson && ( 
                     <div  className="fixed inset-0 z-100 overflow-y-auto bg-black/30 flex items-center justify-center">
-                     <div className='bg-white p-10 rounded-xl flex flex-col gap-5 w-1/2'>
+                     <div className='bg-white p-10 rounded-xl flex flex-col gap-5 w-1/2 max-md:w-full max-md:mx-10'>
                        <div className='flex items-center justify-between'>
                         <h2 className='text-amber-500  font-semibold'>{selectedPerson.name}</h2>
                         <button className="p-2 text-2xl text-red-700 w-15 h-15 cursor-pointer flex items-center justify-center"

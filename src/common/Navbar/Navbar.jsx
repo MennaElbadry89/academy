@@ -46,7 +46,7 @@ if (selected) {
 
 return(
     <>
-    <nav className="px-5 py-2  bg-gray-900 shadow-lg flex justify-between md:items-center z-100 relative">
+    <nav className="px-10 py-2  bg-gray-900 shadow-lg flex justify-between md:items-center z-100 relative">
         <div className="text-xl text-amber-500 text-shadow-lg pr-5 ">
             <a href="/"><img src={logo} width={40} height={40} alt="" /></a>
         </div>          

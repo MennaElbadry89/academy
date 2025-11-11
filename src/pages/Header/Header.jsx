@@ -31,22 +31,22 @@ export default function Home(){
 
         </section>
             <div className=" typeicon w-full flex items-center justify-center gap-2 py-2">
-            <img src={html} className="w-15 h-15  hover:w-25"  alt="" />
-            <img src={css} className="w-15 h-15  hover:w-25"  alt="" />
-            <img src={js} className="w-15 h-15  hover:w-25"  alt="" />
-            <img src={jquery} className="w-15 h-15  hover:w-25"  alt="" />
-            <img src={bootstrap} className="w-15 h-15  hover:w-25"  alt="" />
-            <img src={tailwind} className="w-15 h-15  hover:w-25"  alt="" />
-            <img src={react} className="w-15 h-15  hover:w-25"  alt="" />
-            <img src={vite} className="w-15 h-15  hover:w-25"  alt="" />
-            <img src={npm} className="w-15 h-15  hover:w-25"  alt="" />
-            <img src={fire} className="w-15 h-15  hover:w-25"  alt="" />
-            <img src={git} className="w-15 h-15  hover:w-25"  alt="" />
-            <img src={github} className="w-15 h-15  hover:w-25"  alt="" />
-            <img src={php} className="w-15 h-15 hover:w-25"  alt="" />
-            <img src={laravel} className="w-15 h-15  hover:w-25"  alt="" />
-            <img src={node} className="w-15 h-15  hover:w-25"  alt="" />
-            <img src={mysql} className="w-15 h-15  hover:w-25"  alt="" />
+            <img src={html} className="w-10 h-10  hover:w-25"  alt="" />
+            <img src={css} className="w-10 h-10  hover:w-25"  alt="" />
+            <img src={js} className="w-10 h-10  hover:w-25"  alt="" />
+            <img src={jquery} className="w-10 h-10  hover:w-25"  alt="" />
+            <img src={bootstrap} className="w-10 h-10  hover:w-25"  alt="" />
+            <img src={tailwind} className="w-10 h-10  hover:w-25"  alt="" />
+            <img src={react} className="w-10 h-10  hover:w-25"  alt="" />
+            <img src={vite} className="w-10 h-10  hover:w-25"  alt="" />
+            <img src={npm} className="w-10 h-10  hover:w-25"  alt="" />
+            <img src={fire} className="w-10 h-10  hover:w-25"  alt="" />
+            <img src={git} className="w-10 h-10  hover:w-25"  alt="" />
+            <img src={github} className="w-10 h-10  hover:w-25"  alt="" />
+            <img src={php} className="w-10 h-10 hover:w-25"  alt="" />
+            <img src={laravel} className="w-10 h-10  hover:w-25"  alt="" />
+            <img src={node} className="w-10 h-10  hover:w-25"  alt="" />
+            <img src={mysql} className="w-10 h-10  hover:w-25"  alt="" />
             </div>
 
       </>

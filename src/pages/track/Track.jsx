@@ -45,7 +45,7 @@ const cards = [
     return(
         <>
         <div className="max-md:px-10 Track px-20 my-0 bg-gray-200">
-            <h1 className="text-amber-500 m-5 p-5 text-5xl font-semibold"> Available Tracks : </h1>
+            <h1 className="text-amber-500 m-5 p-5 text-5xl font-semibold max-md:text-3xl "> Available Tracks : </h1>
        <Swiper
         slidesPerView={3}
         spaceBetween={30}

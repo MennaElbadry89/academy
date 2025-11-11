@@ -10,11 +10,11 @@ export default function Contact(){
 
 
     return(
-        <section className=" pt-5 bg-gray-200">
+        <section className="@container pt-5 bg-gray-200 ">
         <h1 className="max-md:ml-10 text-amber-500  py-5 ml-20 text-2xl">Keep in touch </h1>
 
-        <div className="Contact  mb-5 flex max-md:flex-col max-md:items-center max-md:justify-center gap-5 mx-auto">
-            <form className="flex flex-col gap-3 bg-white border border-amber-200 p-10 rounded-lg shadow-lg w-1/2   max-md:w-full">
+        <div className="Contact  mb-5 flex max-md:flex-col max-md:items-center max-md:justify-center gap-5 mx-20 max-md:mx-10">
+            <form className="flex flex-col gap-5 bg-white border border-amber-200 p-10 rounded-lg shadow-lg w-1/2   max-md:w-full">
                 <input type="text" placeholder="Name" className="border border-amber-200 rounded-lg px-3 py-2"/>
                 <input type="text" placeholder="E-mail" className="border border-amber-200 rounded-lg px-3 py-2"/>
                 <input type="text" placeholder="Subject" className="border border-amber-200 rounded-lg px-3 py-2"/>
@@ -22,7 +22,7 @@ export default function Contact(){
                 <button className="bg-amber-500 hover:bg-amber-300 text-white cursor-pointer px-3 py-2 border rounded-lg w-1/2">Submit</button>
             </form>
 
-            <div className="w-1/2 max-md:w-full p-10 flex flex-col justify-center items-center">
+            <div className="w-1/2 max-md:w-full bg-white border border-amber-200 p-10 flex flex-col justify-center items-center">
             {/* <h1 className="text-amber-500  py-0 mx-20 text-2xl"> what they said about us:</h1> */}
                     <KeenSlider/>
              </div>

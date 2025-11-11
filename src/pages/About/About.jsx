@@ -24,7 +24,7 @@ export default function About(){
             </div>
            
             </div> 
-            <div className="max-md:w-full w-1/2 overflow:hidden">     
+            <div className="max-md:w-full w-1/2 p-4 overflow:hidden">     
                 <img src={img}  className=" w-full h-full" alt="" />
             </div>    
         </div>
