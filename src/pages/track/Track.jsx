@@ -44,8 +44,8 @@ const cards = [
 ]
     return(
         <>
-        <div className="max-md:px-10 Track px-20 my-0 bg-gray-200">
-            <h1 className="text-amber-500 m-5 p-5 text-5xl font-semibold max-md:text-3xl "> Available Tracks : </h1>
+        <div className="Track my-0 bg-gray-100 px-20 max-md:px-10">
+            <h1 className="mb-5 p-5 text-5xl font-semibold text-amber-500 max-md:text-2xl"> Available Tracks : </h1>
        <Swiper
         slidesPerView={3}
         spaceBetween={30}
@@ -79,14 +79,14 @@ const cards = [
       >
         {cards.map((card) => (
           <SwiperSlide key={card.id}>
-            <div className="max-w-sm rounded-xl overflow-hidden shadow-lg bg-white my-10 mx-auto">
+            <div className="mx-auto mb-10 max-w-sm overflow-hidden rounded-xl bg-white shadow-lg">
               <img className="w-full" src={card.imag} alt={card.title}/>
               <div className="px-6 py-4">
-                <div className="font-bold text-amber-500 text-xl mb-2">{card.title}</div>
-                <p className="text-gray-700 text-base"> {card.desc} </p>
+                <div className="mb-2 text-xl font-bold text-amber-500">{card.title}</div>
+                <p className="text-base text-gray-700"> {card.desc} </p>
               </div>
-              <div className="px-6 pt-4 pb-2">
-                <button className="bg-amber-500 hover:bg-amber-300 text-white cursor-pointer p-2 rounded-lg  w-full"  
+              <div className="px-6 pb-2 pt-4">
+                <button className="w-full cursor-pointer rounded-lg bg-amber-500 p-2 text-white hover:bg-amber-300"  
                   onClick={() => addToCart(card)}
                   disabled={cart.find(item => item.id === card.id)}>    
                   {cart.find(item => item.id === card.id) ? "On Cart" : "Add To Cart"}

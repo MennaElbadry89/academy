@@ -46,13 +46,13 @@ export default function Team() {
   }
 
   return (
-    <div className="bg-gray-200 py-10  max-md:px-10">
+    <div className="bg-gray-100 py-10 max-md:px-10">
       <div className="mx-auto grid max-w-7xl gap-20 px-6 lg:px-8 xl:grid-cols-3">
         <div className="max-w-xl">
-          <h2 className="text-2xl font-semibold tracking-tight text-pretty text-amber-500 sm:text-4xl ">
+          <h2 className="text-pretty text-2xl font-semibold tracking-tight text-amber-500 sm:text-4xl">
             Meet our leadership
           </h2>
-          <p className="mt-6 sm:text-lg/8 max-sm:text-1/16 text-blue-950 ">
+          <p className="max-sm:text-1/16 mt-6 text-blue-950 sm:text-lg/8">
             We’re a dynamic group of individuals who are passionate about what we do and dedicated to delivering the
             best results for our clients.
           </p>
@@ -64,16 +64,16 @@ export default function Team() {
                 <img alt="" src={person.imageUrl}
                   className="size-25 max-md:size-16 rounded-full outline-1 -outline-offset-1 outline-black/5"/>
                 <div>
-                  <h3 className="text-xl font-semibold tracking-tight text-amber-500 cursor-pointer"
+                  <h3 className="cursor-pointer text-xl font-semibold tracking-tight text-amber-500"
                       onClick={()=> handleOpen(person)}>{person.name}</h3>
-                  <p className="text-sm/6 font-semibold text-blue-950 " >{person.role}</p>
+                  <p className="text-sm/6 font-semibold text-blue-950" >{person.role}</p>
                
                   { open && selectedPerson && ( 
-                    <div  className="fixed inset-0 z-100 overflow-y-auto bg-black/30 flex items-center justify-center">
-                     <div className='bg-white p-10 rounded-xl flex flex-col gap-5 w-1/2 max-md:w-full max-md:mx-10'>
+                    <div  className="z-100 fixed inset-0 flex items-center justify-center overflow-y-auto bg-black/30">
+                     <div className='flex w-1/2 flex-col gap-5 rounded-xl bg-white p-10 max-md:mx-10 max-md:w-full'>
                        <div className='flex items-center justify-between'>
-                        <h2 className='text-amber-500  font-semibold'>{selectedPerson.name}</h2>
-                        <button className="p-2 text-2xl text-red-700 w-15 h-15 cursor-pointer flex items-center justify-center"
+                        <h2 className='font-semibold text-amber-500'>{selectedPerson.name}</h2>
+                        <button className="w-15 h-15 flex cursor-pointer items-center justify-center p-2 text-2xl text-red-700"
                                  onClick={()=> setOpen(false)}><IoIosCloseCircle/></button>
                         </div> 
                       <hr />

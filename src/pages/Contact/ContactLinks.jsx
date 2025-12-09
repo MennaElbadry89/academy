@@ -16,23 +16,23 @@ export default function Contact(){
 
 
     return(
-        <section className="@container pt-5 bg-gray-200 fixed  right-20 top-1/2 transform -translate-y-1/2 z-100">
-        <div className="ContactLinks  mb-2 flex flex-col items-center justify-center gap-5 ">
-            <a href="https://wa.me/+201002020020" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-green-500 text-white p-2 rounded-full hover:bg-green-600 transition">
+        <section className="@container z-100 fixed right-20 top-1/2 -translate-y-1/2 transform bg-gray-200 pt-5">
+        <div className="ContactLinks mb-2 flex flex-col items-center justify-center gap-5">
+            <a href="https://wa.me/+201002020020" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full bg-green-500 p-2 text-white transition hover:bg-green-600">
                 <IoLogoWhatsapp size={24} />
             </a>
-            <a href="https://m.me/yourpage" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition">
+            {/* <a href="https://m.me/yourpage" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full bg-blue-600 p-2 text-white transition hover:bg-blue-700">
                 <FaFacebookMessenger size={24} />
-            </a>
-            <a href="tel:+201002020020" className="flex items-center gap-2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-900 transition">
+            </a> */}
+            <a href="tel:+201002020020" className="flex items-center gap-2 rounded-full bg-gray-800 p-2 text-white transition hover:bg-gray-900">
                 <FaPhoneSquareAlt size={24} />
             </a>
-            <a href="https://maps.app.goo.gl/kncfBasfUwVFVmL99" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-red-600 text-white p-2 rounded-full hover:bg-red-700 transition">
+            <a href="https://maps.app.goo.gl/XPeySKn7PTWyn6Xi9" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full bg-red-600 p-2 text-white transition hover:bg-red-700">
                 <FaLocationDot size={24} />
             </a>
-            <a href="/contact" className="flex items-center gap-2 bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 transition">
+            {/* <a href="/contact" className="flex items-center gap-2 rounded-full bg-purple-600 p-2 text-white transition hover:bg-purple-700">
                 <FaWpforms size={24} />
-            </a>
+            </a> */}
         </div>
 
         </section>

@@ -19,34 +19,35 @@ import fire from '/images/Firebase.png'
 import vite from '/images/Vitejs-logo.svg.png'
 
 
+
 export default function Home(){
 
 
     return(
     <>
-        <section className="max-md:px-10  relative px-20 bg-[url('/images/206.jpg')] bg-cover bg-center h-100 ">
-        <div className="absolute inset-0 bg-black/50 ">
-            <h1 className= "typewriter text-amber-500 text-8xl font-bold py-25 max-md:text-3xl " > Learn, Build, Grow</h1>
+        <section className="bg-[url('/images/206.jpg')] h-100 relative bg-cover bg-center px-20 max-md:px-10">
+        <div className="absolute inset-0 bg-black/50">
+            <h1 className= "typewriter py-25 text-8xl font-bold text-amber-500 max-md:text-3xl" > Learn, Build, Grow</h1>
         </div>
 
         </section>
-            <div className=" typeicon w-full flex items-center justify-center gap-2 py-2">
-            <img src={html} className="w-10 h-10  hover:w-25"  alt="" />
-            <img src={css} className="w-10 h-10  hover:w-25"  alt="" />
-            <img src={js} className="w-10 h-10  hover:w-25"  alt="" />
-            <img src={jquery} className="w-10 h-10  hover:w-25"  alt="" />
-            <img src={bootstrap} className="w-10 h-10  hover:w-25"  alt="" />
-            <img src={tailwind} className="w-10 h-10  hover:w-25"  alt="" />
-            <img src={react} className="w-10 h-10  hover:w-25"  alt="" />
-            <img src={vite} className="w-10 h-10  hover:w-25"  alt="" />
-            <img src={npm} className="w-10 h-10  hover:w-25"  alt="" />
-            <img src={fire} className="w-10 h-10  hover:w-25"  alt="" />
-            <img src={git} className="w-10 h-10  hover:w-25"  alt="" />
-            <img src={github} className="w-10 h-10  hover:w-25"  alt="" />
-            <img src={php} className="w-10 h-10 hover:w-25"  alt="" />
-            <img src={laravel} className="w-10 h-10  hover:w-25"  alt="" />
-            <img src={node} className="w-10 h-10  hover:w-25"  alt="" />
-            <img src={mysql} className="w-10 h-10  hover:w-25"  alt="" />
+            <div className="typeicon flex w-full items-center justify-center gap-2 py-2">
+            <img src={html} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={css} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={js} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={jquery} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={bootstrap} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={tailwind} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={react} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={vite} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={npm} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={fire} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={git} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={github} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={php} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={laravel} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={node} className="hover:w-25 h-10 w-10"  alt="" />
+            <img src={mysql} className="hover:w-25 h-10 w-10"  alt="" />
             </div>
 
       </>
