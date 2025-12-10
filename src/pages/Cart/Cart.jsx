@@ -154,22 +154,37 @@ export default function Cart(){
 
                         {
                         isOpenn && (
-                            <div className='z-100 fixed inset-0 flex flex-col items-center justify-center gap-5 bg-black/40'>
-                            <div className='flex h-3/4 w-2/3 flex-col items-center justify-center gap-5 rounded-lg bg-white max-md:h-3/4 max-md:w-4/5'>  
+                            <div className='fixed inset-0 z-50 flex flex-col items-center justify-center gap-5 bg-black/40'>
+                            <div className='max-md:h-9/10 max-md:w-9/10 flex h-4/5 w-2/3 flex-col items-center justify-center gap-2 rounded-lg bg-white p-5'>  
                                <p className='text-center font-semibold text-blue-950'>Confirm your order</p>
                               <div>
+                                 {  
+                                   cart.map((val, id)=>{
+                                    return <div key={id} className="my-1 flex w-full items-center justify-between rounded bg-white px-10 shadow-lg max-md:w-full">                      
+                                      <div className="h-10 w-10 rounded p-2">
+                                         <img src={val.imag}  className='h-full w-full' alt="" />
+                                      </div>
+                                    <div >
+                                       <p className='line-clamp-2 font-semibold text-blue-950 max-md:text-sm'>Course: {val.title}</p>
+                                    </div> 
+                                    <div> 
+                                       <p className='font-semibold text-blue-950 max-md:text-sm'>Price : {val.price}</p>
+                                    </div>
+                                    </div>                                     
+                                      })                      
+                               }
                               <form onSubmit={(e)=>e.preventDefault} className='flex flex-col'>
                                 <div className='mb-4 flex gap-2 max-md:flex-col'>
                                   <div className='flex w-full items-center justify-between p-2 shadow-lg'>
-                                    <label className='font-semibold text-blue-700'>E-mail :</label>                          
+                                    <label className='font-semibold text-blue-700 max-md:text-sm'>E-mail :</label>                          
                                     <input type="email" defaultValue={currentUser?.email} />
                                   </div>
                                   <div className='flex w-full items-center justify-between p-2 shadow-lg'>
-                                    <label className='font-semibold text-blue-700'>Phone:</label>
+                                    <label className='font-semibold text-blue-700 max-md:text-sm'>Phone:</label>
                                     <input type="text" defaultValue={currentUser?.phone} />
                                   </div>
                                   </div>
-                                  <label className='font-semibold text-blue-700'>Shipping Address :</label>
+                                  <label className='font-semibold text-blue-700 max-md:text-sm'>Shipping Address :</label>
                                   <textarea  value={address}
                                     onChange={(e) => setAddress(e.target.value)}
                                     className='w-full rounded border border-gray-300 p-2' placeholder='Enter your shipping address here...'></textarea>
