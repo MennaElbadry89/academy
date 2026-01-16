@@ -90,13 +90,13 @@ return(
     <button onClick={()=>setExist(!exist)} className="mr-5">
       <div className="flex items-center justify-center gap-2">
        { countryData ? ( <img src={countryData?.flags?.png || countryData?.flags?.svg || countryData?.flag} alt={countryData?.name?.common || selected}  className="h-8 w-8 rounded-full"/>)  
-        :(<span className="text-amber-300">welcome</span>)} <span className="text-amber-500">{currentUser.firstname}</span></div>
+        :(<span className="text-amber-300">welcome</span>)} <span className="cursor-pointer text-amber-500 hover:text-amber-300">{currentUser.firstname}</span></div>
     </button>
     {exist && (
-     <ul className="w-30 md:w-46 absolute right-0 top-12 rounded bg-gray-900 p-2 shadow-md">
-    <li ><a href={'/profile'} className="block px-10 py-2 text-amber-500 hover:border hover:border-gray-800 hover:font-bold hover:shadow" >Profile</a></li>
-    <li ><a href={'/orders'} className="my-1 block px-10 py-2 text-amber-500 hover:border hover:border-gray-800 hover:font-bold hover:shadow" >Orders</a></li>
-    <li ><button className="mt-1 block px-10 py-2 text-amber-500 hover:border hover:border-gray-800 hover:font-bold hover:shadow" onClick={()=>setOpenn(true)}>Logout</button>
+     <ul className="absolute right-0 top-12 w-32 rounded bg-gray-900 shadow-md">
+    <li ><a href={'/profile'} className="p-2 text-center text-amber-500 hover:font-bold hover:shadow" >Profile</a></li>
+    <li ><a href={'/orders'} className="my-1 p-2 text-center text-amber-500 hover:font-bold hover:shadow" >Orders</a></li>
+    <li ><button className="cursor-pointer p-2 text-center text-amber-500 hover:font-bold hover:shadow" onClick={()=>setOpenn(true)}>Logout</button>
               { openn && ( 
                     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/30">
                       <div className='flex w-1/4 flex-col gap-5 rounded-xl bg-white p-10'>
