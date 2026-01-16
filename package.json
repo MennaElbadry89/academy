@@ -16,6 +16,7 @@
     "@yusifaliyevpro/countries": "^2.2.2",
     "axios": "^1.11.0",
     "bootstrap": "^5.3.7",
+    "clsx": "^2.1.1",
     "country-flag-icons": "^1.5.19",
     "firebase": "^12.2.1",
     "framer-motion": "^12.23.12",

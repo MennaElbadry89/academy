@@ -1,33 +1,30 @@
 import React from "react";
 import './Contact.css'
-// import { MdMyLocation } from "react-icons/md";
-// import { FaRegMessage } from "react-icons/fa6";
-// import { FaPhoneAlt } from "react-icons/fa";
 import KeenSlider from "./KeenSlider";
 
 
 export default function Contact(){
+    
 
 
-    return(
-        <section className="@container pt-5 bg-gray-200 ">
-        <h1 className="max-md:ml-10 text-amber-500  py-5 ml-20 text-2xl">Keep in touch </h1>
+return(
+    <section className="@container bg-gray-200 pt-5">
+        <h1 className="ml-10 py-5 text-2xl text-amber-500 md:ml-20">Keep in touch </h1>
 
-        <div className="Contact  mb-5 flex max-md:flex-col max-md:items-center max-md:justify-center gap-5 mx-20 max-md:mx-10">
-            <form className="flex flex-col gap-5 bg-white border border-amber-200 p-10 rounded-lg shadow-lg w-1/2   max-md:w-full">
-                <input type="text" placeholder="Name" className="border border-amber-200 rounded-lg px-3 py-2"/>
-                <input type="text" placeholder="E-mail" className="border border-amber-200 rounded-lg px-3 py-2"/>
-                <input type="text" placeholder="Subject" className="border border-amber-200 rounded-lg px-3 py-2"/>
-                <textarea name="message" id="message" placeholder="Message" className="border border-amber-200 rounded-lg px-3 pt-3 pb-10"></textarea>
-                <button className="bg-amber-500 hover:bg-amber-300 text-white cursor-pointer px-3 py-2 border rounded-lg w-1/2">Submit</button>
+        <div className="Contact mx-10 mb-5 flex flex-col items-center justify-center gap-5 md:mx-20 md:flex-row">
+           
+            <form className="flex w-full flex-col gap-5 rounded-lg border border-amber-200 bg-white p-10 shadow-lg md:w-1/2">
+                <input type="text" placeholder="Name" className="rounded-lg border border-amber-200 p-2"/>
+                <input type="text" placeholder="E-mail" className="rounded-lg border border-amber-200 p-2"/>
+                <input type="text" placeholder="Subject" className="rounded-lg border border-amber-200 p-2"/>
+                <textarea name="message" id="message" placeholder="Message" className="rounded-lg border border-amber-200 p-3"></textarea>
+                <button className="w-1/2 cursor-pointer rounded-lg border bg-amber-500 p-2 text-white hover:bg-amber-300">Submit</button>
             </form>
 
-            <div className="w-1/2 max-md:w-full bg-white border border-amber-200 p-10 flex flex-col justify-center items-center">
-            {/* <h1 className="text-amber-500  py-0 mx-20 text-2xl"> what they said about us:</h1> */}
+            <div className="flex w-full flex-col items-center justify-center border border-amber-200 bg-white p-10 md:w-1/2">
                     <KeenSlider/>
-             </div>
+            </div>
         </div>
-
-        </section>
+    </section>
     )
 }

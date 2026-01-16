@@ -25,9 +25,9 @@ export default function Home(){
 
     return(
     <>
-        <section className="bg-[url('/images/206.jpg')] h-100 relative bg-cover bg-center px-20 max-md:px-10">
+        <section className="bg-[url('/images/206.jpg')] md:h-100 not-last-of-type:px-10 relative h-64 bg-cover bg-center md:px-20">
         <div className="absolute inset-0 bg-black/50">
-            <h1 className= "typewriter py-25 text-8xl font-bold text-amber-500 max-md:text-3xl" > Learn, Build, Grow</h1>
+            <h1 className= "typewriter py-25 text-3xl font-bold text-amber-500 md:text-8xl" > Learn, Build, Grow</h1>
         </div>
 
         </section>

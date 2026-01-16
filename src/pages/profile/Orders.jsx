@@ -1,113 +1,63 @@
-import  './Orders.css'
-import LottiHandeler from '../../assets/Lottifiles/LottiHandeler';
-import { authContext } from '../../context/AuthContext';
-import React, { useContext, useEffect, useState } from "react";
-import axios from 'axios'
-import { Navigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
+import LottiHandeler from "../../assets/Lottifiles/LottiHandeler";
 
-export default function Orders(){
+export default function Orders() {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-        const {loadingDisplayCurrentUser, currentUser} = useContext(authContext)
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const ordersCollection = collection(db, "orders");
+        const ordersSnapshot = await getDocs(ordersCollection);
+        const ordersList = ordersSnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setOrders(ordersList);
+      } catch (error) {
+        console.error("Error fetching orders:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-        const [orders, setOrders] = useState([])
-        const [isLoadingOrders, setIsLoadingOrders] = useState(true)
-        const [error, setError] = useState(null)
+    fetchOrders();
+  }, []);
 
-        useEffect(()=>{
-            if(!currentUser) return
-            let cancelled = false
-            const fetchOrders = async()=>{
-                try {
-                    setIsLoadingOrders(true)
-                    setError(null)
-                    const res = await axios.get(`http://localhost:3003/orders`, { params: { userId: currentUser.id } })
-                    if(!cancelled){
-                        const list = Array.isArray(res.data) ? res.data : []
-                        setOrders(list)
-                    }
-                } catch (err) {
-                    if(!cancelled){
-                        setError('Failed to load orders')
-                        setOrders([])
-                    }
-                } finally {
-                    if(!cancelled){
-                        setIsLoadingOrders(false)
-                    }
-                }
-            }
-            fetchOrders()
-            return ()=>{ cancelled = true }
-        }, [currentUser])
+  if (loading) return <LottiHandeler />;
 
-        if( loadingDisplayCurrentUser){
-            return <LottiHandeler  status={'page'} />
-        }
-        else if( !loadingDisplayCurrentUser && ! currentUser){
-            return <Navigate to={'/login'}/>
-        }
-        else{
-            return(
-                <>
-                <div className="Orders container mb-5">
-                   <p className='text-center h2 my-5' >Your <span style={{color: 'var(--secondry-color)'}}>Orders</span></p>
-                   {
-                    isLoadingOrders ? (
-                        <LottiHandeler status={'page'} />
-                    ) : error ? (
-                        <div className='alert alert-danger'>{error}</div>
-                    ) : (Array.isArray(orders) && orders.length > 0) ? (
-                        <div className="row g-3">
-                            {orders.map((order)=>{
-                                const items = Array.isArray(order.items) ? order.items : []
-                                const total = order.total
-                                return (
-                                    <div key={order.id} className="col-12">
-                                        <div className="card shadow-sm">
-                                            <div className="card-body">
-                                                <div className='d-flex justify-content-between align-items-center mb-2'>
-                                                    <div><b>Order ID:</b> {order.id}</div>
-                                                    <div><b>Total:</b> {total}$</div>
-                                                </div>
-                                                <div className="table-responsive">
-                                                    <table className="table align-middle">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Image</th>
-                                                                <th>Title</th>
-                                                                <th>Price</th>
-                                                                <th>Amount</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            {items.map((it, idx)=>{
-                                                                return (
-                                                                    <tr key={idx}>
-                                                                        <td style={{width: '64px'}}>
-                                                                            <img src={it.image} alt="" style={{width: '60px', height: '60px', objectFit: 'cover'}} />
-                                                                        </td>
-                                                                        <td>{it.catogery || it.title || `Item #${it.id}`}</td>
-                                                                        <td>{it.price}$</td>
-                                                                        <td>{it.amount}</td>
-                                                                    </tr>
-                                                                )
-                                                            })}
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    ) : (
-                        <div className='text-center opacity-75'>You have no orders yet.</div>
-                    )
-                   }
-                </div>        
-               </>
-    )
-}
-        
+  return (
+    <div className="bg-gray-50 p-10">
+      <h1 className="my-5 text-center text-2xl font-bold text-amber-500 md:text-4xl">Orders</h1>
+      
+      {orders.length === 0 && <p className="my-5 text-center text-2xl font-bold text-amber-500 md:text-4xl">No orders found</p>}
+      
+      <div className="mx-auto my-2 flex w-full flex-col rounded border border-gray-300 p-10 md:w-2/3">
+        {orders.map((order) => (
+        <div key={order.id} className="border-b border-gray-300 p-3" >
+          <p><strong>Order No:</strong> {order.id}</p>
+          <p><strong>Address:</strong> {order.address}</p>
+          <p><strong>Total Price:</strong> {order.totalPrice} EGP</p>
+          <p><strong>Created At:</strong> {order.createdAt.toDate ? order.createdAt.toDate().toString() : order.createdAt}</p>
+          <div>
+            <strong>Items:</strong>
+            <ul>
+              {order.items?.map((item, index) => (
+                <li key={index}  className="flex items-center">
+                  <div className="my-1 flex w-full items-center justify-between">
+                  <img src={item.image} alt={item.title} className="h-10 w-10" />
+                  <p> {item.title} - ${item.price} </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+     </div>
+    </div>
+  );
 }

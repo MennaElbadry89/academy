@@ -1,7 +1,7 @@
 import LottiHandeler from '../../assets/Lottifiles/LottiHandeler';
 import { authContext } from '../../context/AuthContext';
 import  './Profile.css'
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Navigate } from 'react-router-dom';
 import { CountryContext } from '../../context/CountryContext';
 
@@ -33,13 +33,13 @@ if (selected) {
         else{
             return(
                 <>
-                <div className="Profile container mx-10 p-5 my-15">
-                   <p className='text-center text-2xl text-blue-950 font-semibold my-5' >Your <span className='text-amber-500 '>profile</span></p>
-                   <p className='my-3 font-semibold text-blue-950'>First Name : <span className='text-amber-500 '>{currentUser?.firstname}</span></p>
-                   <p className='my-3 font-semibold text-blue-950'>Last Name : <span className='text-amber-500 '>{currentUser?.lastname}</span></p>
-                   <p className='my-3 font-semibold text-blue-950'>E-mail : <span className='text-amber-500 '>{currentUser?.email}</span></p>
-                   <p className='my-3 font-semibold text-blue-950'>Phone : <span className='text-amber-500 '>{currentUser?.phone}</span></p>        
-                   <p className='my-3 font-semibold text-blue-950 flex items-center gap-2'>Country :   {countryData?.name}   { countryData ? ( <img src={countryData?.flags?.png || countryData?.flags?.svg || countryData?.flag} alt={countryData?.name?.common || selected}  className="w-8 h-8 rounded-full "/>)  
+                <div className="Profile my-15 container mx-10 p-5">
+                   <p className='my-5 text-center text-2xl font-semibold text-blue-950' >Your <span className='text-amber-500'>profile</span></p>
+                   <p className='my-3 font-semibold text-blue-950'>First Name : <span className='text-amber-500'>{currentUser?.firstname}</span></p>
+                   <p className='my-3 font-semibold text-blue-950'>Last Name : <span className='text-amber-500'>{currentUser?.lastname}</span></p>
+                   <p className='my-3 font-semibold text-blue-950'>E-mail : <span className='text-amber-500'>{currentUser?.email}</span></p>
+                   <p className='my-3 font-semibold text-blue-950'>Phone : <span className='text-amber-500'>{currentUser?.phone}</span></p>        
+                   <p className='my-3 flex items-center gap-2 font-semibold text-blue-950'>Country :   {countryData?.name}   { countryData ? ( <img src={countryData?.flags?.png || countryData?.flags?.svg || countryData?.flag} alt={countryData?.name?.common || selected}  className="h-8 w-8 rounded-full"/>)  
                                   :("")}                       
                     </p>
                 </div>        

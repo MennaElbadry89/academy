@@ -13,23 +13,23 @@ export default function LottiHandeler({status}){
     switch (status){
 
         case 'main':
-                return <div className="LottiHandeler  flex justify-center items-center " >
+                return <div className="LottiHandeler mx-auto flex h-1/2 w-1/2 items-center justify-center" >
             <Lottie animationData={lotti1} />
                 </div>
         case 'page' : 
-                return <div className="LottiHandeler flex justify-center items-center " >
+                return <div className="LottiHandeler mx-auto flex h-1/2 w-1/2 items-center justify-center" >
                     <Lottie animationData={lotti2} />          
                 </div>
         case 'cart' : 
-                return <div className="LottiHandeler flex justify-center items-center " >
+                return <div className="LottiHandeler mx-auto flex h-1/2 w-1/2 items-center justify-center" >
                     <Lottie animationData={cart} />          
                 </div>
         case 'Err' :
-                return <div className="LottiHandeler flex justify-center items-center " >
+                return <div className="LottiHandeler mx-auto flex h-1/2 w-1/2 items-center justify-center" >
                     <Lottie animationData={Err} />          
                 </div>
         default : 
-                 return <div className="LottiHandeler flex justify-center items-center " >
+                 return <div className="LottiHandeler mx-auto flex h-1/2 w-1/2 items-center justify-center" >
                     <Lottie animationData={Error} /> 
                     <p className='h3 text-danger'>Go back to Home</p>    
                     <Link to={"/"} className='h4 text-info'>Go back to Home</Link>     

@@ -1,12 +1,14 @@
 import  './Cart.css'
-import React, { useEffect , useState } from "react";
+import { useEffect , useState } from "react";
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import LottiHandeler from '../../assets/Lottifiles/LottiHandeler';
-import { auth } from '../../firebase/firebase';
 import {authContext} from '../../context/AuthContext'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom';
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from '../../firebase/firebase';
+
 
 export default function Cart(){
   const [address, setAddress] = useState("");
@@ -20,6 +22,9 @@ export default function Cart(){
    
        const { cart , deleteItem , clearCart  } = useContext(CartContext)    
        const { currentUser , loadingDisplayCurrentUser } = useContext(authContext)
+       
+       console.log("currentUser", currentUser);
+
 
         //    const TotalPrice = cart.reduce((a , b)=>{
         //     return a + b.price
@@ -58,15 +63,58 @@ export default function Cart(){
             setOpen(false)
           }
 
-        const confirmCheckout = () =>{
-            clearCart()
-            setIsOpenn(false)
-          }
+        // const confirmCheckout = () =>{
+        //     clearCart()
+        //     setIsOpenn(false)
+        //   }
+        
+ const confirmCheckout = async () => {
+  try {
+    setIsLoading(true);
+
+    const orderData = {
+      userId: currentUser.id,
+      email: currentUser.email,
+      phone: currentUser.phone || "",
+      address: address,
+      items: cart.map(item => ({
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        image: item.imag,
+      })),
+      totalPrice: TotalPrice,
+      status: "pending",
+      createdAt: serverTimestamp(),
+    };
+    await addDoc(collection(db, "orders"), orderData);
+
+    Swal.fire({
+      icon: "success",
+      title: "Order placed successfully",
+      text: "Your order has been saved",
+    });
+    clearCart();
+    setAddress("");
+    setIsOpenn(false);
+
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Order failed",
+      text: error.message,
+    });
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+        
         const cancelCheckout = () =>{
             setIsOpenn(false)
           }
 
- useEffect(() => {
+        useEffect(() => {
             if (!currentUser && !loadingDisplayCurrentUser) {
                 Swal.fire({
                     title: "Authentication Required",
@@ -96,56 +144,56 @@ export default function Cart(){
                        <LottiHandeler status={"page"} />
                        :
                        cart.length === 0 ?
-                       <div>
-                           <p className='p-5 text-xl font-semibold text-blue-950'>Your cart is empty</p>
-                           <a href='/track' className='p-5 text-amber-500'>what about choosing a track?</a>
+                       <div className='flex flex-col'>
+                           <p className='p-5 text-center text-xl font-semibold text-blue-950'>Your cart is empty</p>
+                           <a href='/track' className='p-5 text-center text-amber-500'>what about choosing a track?</a>
                        </div>
                        :    
-               <div className="row ml-30 w-full gap-1 max-md:ml-0">
+               <div className="row md:ml-30 ml-0 w-full gap-1">
                    {  
                     cart.map((val, id)=>{
-                        return <div key={id} className="px-15 my-1 flex w-[80%] items-center justify-between rounded bg-white shadow-lg max-md:w-full">                      
+                        return <div key={id} className="mx-auto my-1 flex w-full items-center justify-between rounded bg-white px-5 shadow-lg md:w-4/5 md:px-10">                      
                        <div className="rounded p-2">
                            <img src={val.imag}  className='h-10 w-10 rounded-full' alt="" />
                        </div>
                        <div>
                            <p className='w-full font-semibold text-blue-950'>Title : {val.title}</p>
-                           <p className='w-full font-semibold text-blue-950'>Price : {val.price}</p>
+                           <p className='w-full font-semibold text-blue-950'>Price : {val.price} EGP </p>
                        </div>
                        <div>
-                           <button onClick={()=>handleDelete(val.id)} className='cursor-pointer rounded-lg bg-red-800 p-2 text-white hover:bg-red-500 max-md:text-sm'>Remove </button>
+                           <button onClick={()=>handleDelete(val.id)} className='cursor-pointer rounded-lg bg-red-800 p-2 text-sm text-white hover:bg-red-500'>Remove </button>
                        </div>                                      
                    </div>
                        })                      
                    } 
                    {
                         isOpen && (
-                            <div className='z-100 fixed inset-0 flex flex-col items-center justify-center gap-5 bg-black/40'>
-                            <div className='flex h-1/4 w-1/3 flex-col items-center justify-center gap-5 rounded-lg bg-white max-md:w-2/3'>  
+                            <div className='fixed inset-0 z-50 flex flex-col items-center justify-center gap-5 bg-black/40'>
+                            <div className='flex w-2/3 flex-col items-center justify-center gap-5 rounded-lg bg-white md:h-1/4 md:w-1/3'>  
                                <p className='text-center font-semibold text-blue-950'>Are you sure to delete item?!</p>
                             <div className='flex items-center gap-1'>
-                                 <button onClick={cancel} className='cursor-pointer rounded-lg bg-amber-500 px-4 py-2 text-white max-md:text-sm'>cancel</button>
-                                 <button onClick={confirm} className='cursor-pointer rounded-lg bg-red-800 px-4 py-2 text-white max-md:text-sm' >confirm</button>
+                                 <button onClick={cancel} className='cursor-pointer rounded-lg bg-amber-500 p-2 text-sm text-white'>cancel</button>
+                                 <button onClick={confirm} className='cursor-pointer rounded-lg bg-red-800 p-2 text-sm text-white' >confirm</button>
                             </div>
                             </div> 
                             </div>
                         )
                        }
-                       <div className="px-15 my-1 flex w-4/5 items-center justify-between rounded bg-white py-1 shadow-lg max-md:w-full">                           
-                           <p className='w-full font-semibold text-blue-950'>TotalPrice : {TotalPrice} </p>
+                       <div className="mx-auto my-1 flex w-full items-center justify-between rounded bg-white px-5 py-2 shadow-lg md:w-4/5 md:px-10">                           
+                           <p className='w-full font-semibold text-blue-950'>TotalPrice : {TotalPrice} EGP </p>
                            <div className='flex gap-5'>
-                              <button onClick={()=>setIsOpenn(true)} className='cursor-pointer rounded-lg bg-amber-500 p-2 text-white hover:bg-amber-400 max-md:text-sm'>Checkout </button>
-                              <button onClick={handleClear} className='cursor-pointer rounded-lg bg-red-800 p-2 text-white hover:bg-red-500 max-md:text-sm'>ClearCart </button>
+                              <button onClick={()=>setIsOpenn(true)} className='cursor-pointer rounded-lg bg-amber-500 p-2 text-sm text-white hover:bg-amber-400'>Checkout </button>
+                              <button onClick={handleClear} className='cursor-pointer rounded-lg bg-red-800 p-2 text-sm text-white hover:bg-red-500'>ClearCart </button>
                            </div>
                        </div> 
                         {
                         open && (
-                            <div className='z-100 fixed inset-0 flex flex-col items-center justify-center gap-5 bg-black/40'>
-                            <div className='flex h-1/4 w-1/3 flex-col items-center justify-center gap-5 rounded-lg bg-white max-md:w-2/3'>  
+                            <div className='fixed inset-0 z-50 flex flex-col items-center justify-center gap-5 bg-black/40'>
+                            <div className='flex w-2/3 flex-col items-center justify-center gap-5 rounded-lg bg-white md:h-1/4 md:w-1/3'>  
                                <p className='text-center font-semibold text-blue-950'>Are you sure to clear cart?!</p>
                             <div className='flex items-center gap-1'>
-                                 <button onClick={cancelClear} className='cursor-pointer rounded-lg bg-amber-500 px-4 py-2 text-white max-md:text-sm'>cancel</button>
-                                 <button onClick={confirmClear} className='cursor-pointer rounded-lg bg-red-800 px-4 py-2 text-white max-md:text-sm' >confirm</button>
+                                 <button onClick={cancelClear} className='cursor-pointer rounded-lg bg-amber-500 p-2 text-sm text-white'>cancel</button>
+                                 <button onClick={confirmClear} className='cursor-pointer rounded-lg bg-red-800 p-2 text-sm text-white' >confirm</button>
                             </div>
                             </div> 
                             </div>
@@ -155,7 +203,7 @@ export default function Cart(){
                         {
                         isOpenn && (
                             <div className='fixed inset-0 z-50 flex flex-col items-center justify-center gap-5 bg-black/40'>
-                            <div className='max-md:h-9/10 max-md:w-9/10 flex h-4/5 w-2/3 flex-col items-center justify-center gap-2 rounded-lg bg-white p-5'>  
+                            <div className='mx-5 flex flex-col items-center justify-center gap-2 rounded-lg bg-white p-5 md:h-4/5 md:w-2/3'>  
                                <p className='text-center font-semibold text-blue-950'>Confirm your order</p>
                               <div>
                                  {  
@@ -165,16 +213,17 @@ export default function Cart(){
                                          <img src={val.imag}  className='h-full w-full' alt="" />
                                       </div>
                                     <div >
-                                       <p className='line-clamp-2 font-semibold text-blue-950 max-md:text-sm'>Course: {val.title}</p>
+                                       <p className='md:text-md line-clamp-2 text-sm font-semibold text-blue-950'>{val.title}</p>
                                     </div> 
                                     <div> 
-                                       <p className='font-semibold text-blue-950 max-md:text-sm'>Price : {val.price}</p>
+                                       <p className='md:text-md text-sm font-semibold text-blue-950'>${val.price}</p>
                                     </div>
                                     </div>                                     
                                       })                      
                                }
+                               
                               <form onSubmit={(e)=>e.preventDefault} className='flex flex-col'>
-                                <div className='mb-4 flex gap-2 max-md:flex-col'>
+                                <div className='mb-4 flex flex-col gap-2 md:flex-row'>
                                   <div className='flex w-full items-center justify-between p-2 shadow-lg'>
                                     <label className='font-semibold text-blue-700 max-md:text-sm'>E-mail :</label>                          
                                     <input type="email" defaultValue={currentUser?.email} />
@@ -188,13 +237,12 @@ export default function Cart(){
                                   <textarea  value={address}
                                     onChange={(e) => setAddress(e.target.value)}
                                     className='w-full rounded border border-gray-300 p-2' placeholder='Enter your shipping address here...'></textarea>
-
                               </form>
                               </div>
                             <div className='flex items-center gap-1'>
-                                 <button onClick={cancelCheckout} className='cursor-pointer rounded-lg bg-amber-500 px-4 py-2 text-white max-md:text-sm'>cancel</button>
+                                 <button onClick={cancelCheckout} className='cursor-pointer rounded-lg bg-amber-500 p-2 text-sm text-white'>cancel</button>
                                  <button disabled={!address.trim()}
-                                   onClick={confirmCheckout}  className={`max-md:text-md rounded-lg px-4 py-2 text-white
+                                   onClick={confirmCheckout}  className={`rounded-lg p-2 text-sm text-white
                                    ${address.trim() ? "cursor-pointer bg-red-800" : "cursor-not-allowed bg-red-300"}`} >confirm</button>
                             </div>
                             </div> 

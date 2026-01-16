@@ -1,9 +1,12 @@
-import React from "react";
 import './Track.css'
 import img from '/images/66.png'
 import front from '/images/front.png'
 import back from '/images/back.png'
 import flutter from '/images/ff.webp'
+import cyper from '/images/cyber.jpg'
+import net from '/images/net.jpg'
+import analy from '/images/analy.jpg'
+import data from '/images/data.jpg'
 import {Swiper , SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -15,10 +18,12 @@ import { CartContext } from "../../context/CartContext";
 
 
 export default function Track(){
+  
   const {cart , addToCart} = useContext(CartContext);
+  
 const cards = [
   {id: 1, 
-    title: "Fundamentals of programming", 
+    title: "programming fundamentals", 
     imag: img, 
     desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
     price: 1500
@@ -40,12 +45,36 @@ const cards = [
     imag: flutter, 
     desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
     price: 3500
+},
+ {id: 5, 
+    title: "Cyber Security", 
+    imag: cyper, 
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+    price: 6000
+  },
+  {id: 6, 
+    title: "network fundamentals", 
+    imag: net, 
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+    price: 4000
+},
+  {id: 7, 
+    title: "data analysis", 
+    imag: analy, 
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+    price: 3000
+},
+  {id: 8, 
+    title: "database", 
+    imag: data, 
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+    price: 2000
 }
 ]
     return(
         <>
-        <div className="Track my-0 bg-gray-100 px-20 max-md:px-10">
-            <h1 className="mb-5 p-5 text-5xl font-semibold text-amber-500 max-md:text-2xl"> Available Tracks : </h1>
+        <div className="Track my-0 bg-gray-100 px-10 md:px-20">
+            <h1 className="mb-5 p-5 text-2xl font-semibold text-amber-500 md:text-4xl"> Available Tracks : </h1>
        <Swiper
         slidesPerView={3}
         spaceBetween={30}
@@ -53,7 +82,7 @@ const cards = [
         navigation={true}
         loop={true}
         autoplay={{
-          delay: 2500,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         modules={[Pagination , Navigation , Autoplay]}
@@ -64,28 +93,31 @@ const cards = [
             spaceBetween: 20,
           },
           640: {
-            slidesPerView: 1,
-            spaceBetween: 20,
+            slidesPerView: 2,
+            spaceBetween: 30,
           },
           768: {
-            slidesPerView: 2,
+            slidesPerView: 3,
             spaceBetween: 40,
           },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 50,
-          },
+          // 1024: {
+          //   slidesPerView: 4,
+          //   spaceBetween: 50,
+          // },
         }}
       >
         {cards.map((card) => (
           <SwiperSlide key={card.id}>
             <div className="mx-auto mb-10 max-w-sm overflow-hidden rounded-xl bg-white shadow-lg">
-              <img className="w-full" src={card.imag} alt={card.title}/>
-              <div className="px-6 py-4">
-                <div className="mb-2 text-xl font-bold text-amber-500">{card.title}</div>
-                <p className="text-base text-gray-700"> {card.desc} </p>
+              <div className="h-48 w-full overflow-hidden">
+                <img className="h-full w-full object-cover" src={card.imag} alt={card.title}/>
               </div>
-              <div className="px-6 pb-2 pt-4">
+              <div className="px-6 py-4">
+                <div className="text-md font-bold text-amber-500">{card.title}</div>
+                <p className="my-2 text-sm text-gray-700"> {card.desc} </p>
+                <p className="text-md text-gray-950"> {card.price} EGP </p>
+              </div>
+              <div className="px-6 py-2">
                 <button className="w-full cursor-pointer rounded-lg bg-amber-500 p-2 text-white hover:bg-amber-300"  
                   onClick={() => addToCart(card)}
                   disabled={cart.find(item => item.id === card.id)}>    

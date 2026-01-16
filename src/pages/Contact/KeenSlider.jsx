@@ -21,12 +21,12 @@ export default function KeenSlider(){
         mode: "free-snap",
         vertical: true,
         slides: {
-          perView: 2,
+          perView: 1,
             spacing: 15,
         },
         breakpoints: {
           "(max-width: 768px)": {
-            slides: { perView: 1, spacing: 10 },
+            slides: { perView: 1, spacing: 15 },
           },
         },
     })
@@ -35,22 +35,23 @@ export default function KeenSlider(){
         if (instanceRef.current) {
           const interval = setInterval(() => {
             instanceRef.current.next();
-          }, 2000); // Change slide every 2 seconds
+          }, 3000); 
           return () => clearInterval(interval);
         }
         }, [instanceRef]);
     return(
-        <div className="flex justify-center items-center ">
+        <div className="flex items-center justify-center">
             <div>
-                <div ref={sliderRef} className="keen-slider h-[400px] w-72">
+                <div ref={sliderRef} className="keen-slider h-80 w-72">
                        {images.map((src, index) => (
-                        <div key={index} className="keen-slider__slide flex justify-center items-center">
-                        <img  src={src} alt={`Image ${index + 1}`} className="w-full h-full object-cover border border-amber-500 rounded-lg " />
+                        <div key={index} className="keen-slider__slide flex items-center justify-center">
+                         <div className="h-full w-full"><img  src={src} alt={`Image ${index + 1}`} 
+                          className="h-full w-full rounded-lg border border-amber-500 object-cover" />
+                         </div>
                         </div>
                     ))}
                 </div>
             </div>
         </div>
-        // </div>
     )
 }

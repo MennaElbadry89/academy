@@ -13,32 +13,35 @@ const Cart = lazy(()=> import('./pages/Cart/Cart'))
 const Register = lazy(()=> import('./pages/auth/Register'))
 const Login = lazy(()=> import('./pages/auth/Login'))
 const Profile = lazy(()=> import('./pages/profile/Profile'))
+const Orders = lazy(()=> import('./pages/profile/Orders'))
 
 
 export default function App(){
 const router = createBrowserRouter([
     {
       path : '/',
-        element : <Suspense fullback={<LottiHandeler status= 'main' />}><Layout/></Suspense>,
+        element : <Suspense fallback={<LottiHandeler status= 'main' />}><Layout/></Suspense>,
     children : [
       {index: true , element :
-                <Suspense fullback={<LottiHandeler status= 'main' />}> <Home/></Suspense> },
+                <Suspense fallback={<LottiHandeler status= 'main' />}> <Home/></Suspense> },
       {path: 'about' , element :
-                <Suspense fullback={<LottiHandeler status= 'page' />}> <About/></Suspense> },
+                <Suspense fallback={<LottiHandeler status= 'page' />}> <About/></Suspense> },
       {path: 'team' , element :
-                <Suspense fullback={<LottiHandeler status= 'page' />}> <Team/></Suspense> },
+                <Suspense fallback={<LottiHandeler status= 'page' />}> <Team/></Suspense> },
       {path: 'track' , element :
-                <Suspense fullback={<LottiHandeler status= 'page' />}> <Track/></Suspense> },
+                <Suspense fallback={<LottiHandeler status= 'page' />}> <Track/></Suspense> },
       {path: 'contact' , element :
-                <Suspense fullback={<LottiHandeler status= 'page' />}> <Contact/></Suspense>},
+                <Suspense fallback={<LottiHandeler status= 'page' />}> <Contact/></Suspense>},
       {path: 'cart' , element :
-                <Suspense fullback={<LottiHandeler status= 'cart' />}> <Cart/></Suspense> },
+                <Suspense fallback={<LottiHandeler status= 'cart' />}> <Cart/></Suspense> },
       {path: 'register' , element :
-                <Suspense fullback={<LottiHandeler status= 'page' />}> <Register/></Suspense> },
+                <Suspense fallback={<LottiHandeler status= 'page' />}> <Register/></Suspense> },
       {path: 'login' , element :
-                <Suspense fullback={<LottiHandeler status= 'page' />}> <Login/></Suspense> },
+                <Suspense fallback={<LottiHandeler status= 'page' />}> <Login/></Suspense> },
       {path: 'profile' , element :
-                <Suspense fullback={<LottiHandeler status= 'page' />}> <Profile/></Suspense> }
+                <Suspense fallback={<LottiHandeler status= 'page' />}> <Profile/></Suspense> },
+      {path: 'orders' , element :
+                <Suspense fallback={<LottiHandeler status= 'page' />}> <Orders/></Suspense> }
     ],
     errorElement : <LottiHandeler status= 'Err' />
   }
