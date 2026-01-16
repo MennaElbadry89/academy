@@ -6,6 +6,7 @@ import LoginSchema from '../validation/Login';
 import { useContext } from 'react';
 import { authContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import clsx from "clsx";
 
 
 export default function Login(){
@@ -31,20 +32,27 @@ const LoginSubmitHandler = async(data)=>{
 }
     return(
         <>
-         <div className="@container Regiser my-0 bg-gray-200 p-5">
-            <h1 className="m-5 text-3xl font-semibold text-amber-500 md:text-5xl">Login Now </h1>
+         <div className="@container Login my-0 bg-gray-200 p-5">
+            <h1 className="m-5 text-center text-2xl font-semibold text-amber-500 md:text-4xl">Login Now </h1>
         <div className="m-auto flex w-full items-center justify-center md:w-1/2"> 
+        
               <form onSubmit={handleSubmit(LoginSubmitHandler)}  className="my-5 flex w-full flex-col justify-center gap-5 rounded-lg border border-amber-300 bg-white p-5 shadow-lg">
                                 <div className="flex flex-col gap-2">
                     <label htmlFor="email" className="font-semibold text-gray-900">E-mail</label>
                     <input type="text" {...register( "email")} 
-                    className= {` ${errors.email ? "invalid" : ""}w-4/5 rounded-lg border border-amber-300 p-3`}/>
-                        { errors.email && <p className="text-red-500">{errors.email.message}</p> }
+                    className= {clsx(
+                     "w-full rounded-lg border border-amber-300 p-3",
+                             {  invalid: errors.email,  }
+                    )}/>
+                    { errors.email && <p className="text-red-500">{errors.email.message}</p> }
                 </div>              
                 <div className="flex flex-col gap-2">
                     <label htmlFor="password" className="font-semibold text-gray-900">Password</label>
                     <input type="text" {...register( "password")} 
-                    className= {` ${errors.password ? "invalid" : ""}w-4/5 rounded-lg border border-amber-300 p-3`}/>
+                    className={clsx(
+                     "w-full rounded-lg border border-amber-300 p-3",
+                             {  invalid: errors.password,  }
+                    )}/>
                         { errors.password && <p className="text-red-500">{errors.password.message}</p> }
                 </div> 
 

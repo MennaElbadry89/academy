@@ -15,11 +15,17 @@ import { Pagination , Navigation , Autoplay} from "swiper/modules";
 import 'swiper/css/autoplay';
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { authContext } from '../../context/AuthContext'
+import {useNavigate} from 'react-router-dom'
+import Swal from "sweetalert2";
+
 
 
 export default function Track(){
   
   const {cart , addToCart} = useContext(CartContext);
+  const {currentUser} = useContext(authContext);
+  const navigate = useNavigate();
   
 const cards = [
   {id: 1, 
@@ -71,6 +77,39 @@ const cards = [
     price: 2000
 }
 ]
+
+  const handleAddToCart = (card) => {
+  if (!currentUser) {
+    Swal.fire({
+      icon: "warning",
+      title: "Login Required",
+      text: "Please login to add items to cart",
+      showCancelButton: true,
+      confirmButtonText: "Login",
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/login");
+      }
+    });
+    return;
+  } else {
+    addToCart(card);
+
+    Swal.fire({
+      icon: "success",
+      title: "Added to Cart",
+      text: "Item has been added successfully 🛒",
+      timer: 1500,
+      showConfirmButton: false,
+    });
+  }
+};
+
+    
+    
+    
+    
     return(
         <>
         <div className="Track my-0 bg-gray-100 px-10 md:px-20">
@@ -119,7 +158,7 @@ const cards = [
               </div>
               <div className="px-6 py-2">
                 <button className="w-full cursor-pointer rounded-lg bg-amber-500 p-2 text-white hover:bg-amber-300"  
-                  onClick={() => addToCart(card)}
+                  onClick={() => handleAddToCart(card)}
                   disabled={cart.find(item => item.id === card.id)}>    
                   {cart.find(item => item.id === card.id) ? "On Cart" : "Add To Cart"}
                 </button>

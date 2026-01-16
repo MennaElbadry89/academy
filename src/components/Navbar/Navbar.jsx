@@ -116,11 +116,12 @@ return(
   )}
    </div>
     }
-                     <button onClick={()=>navigate('/cart')} className="flex cursor-pointer px-5 text-lg text-amber-500 hover:text-amber-300">
-                        <FaCartArrowDown />
-                        <sup>{cartCount}</sup>
-              </button> 
-            </div>             
+    
+     <button onClick={()=>navigate('/cart')} className="flex cursor-pointer px-5 text-lg text-amber-500 hover:text-amber-300">
+        <FaCartArrowDown />
+        <sup>{currentUser? cartCount : ""}</sup>
+      </button> 
+    </div>             
     </div>
       <div>
           <button  onClick={(()=> setIsOpen(!isOpen))} >
