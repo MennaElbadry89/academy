@@ -74,7 +74,6 @@ export default function Cart(){
 
     const orderData = {
       userId: currentUser.id,
-      // name: currentUser.name,
       email: currentUser.email,
       phone: currentUser.phone || "",
       address: address,
@@ -170,7 +169,7 @@ export default function Cart(){
                    {
                         isOpen && (
                             <div className='fixed inset-0 z-50 flex flex-col items-center justify-center gap-5 bg-black/40'>
-                            <div className='flex w-2/3 flex-col items-center justify-center gap-5 rounded-lg bg-white md:h-1/4 md:w-1/3'>  
+                            <div className='flex w-2/3 flex-col items-center justify-center gap-5 rounded-lg bg-white p-5 md:h-1/4 md:w-1/3'>  
                                <p className='text-center font-semibold text-blue-950'>Are you sure to delete item?!</p>
                             <div className='flex items-center gap-1'>
                                  <button onClick={cancel} className='cursor-pointer rounded-lg bg-amber-500 p-2 text-sm text-white'>cancel</button>
@@ -190,7 +189,7 @@ export default function Cart(){
                         {
                         open && (
                             <div className='fixed inset-0 z-50 flex flex-col items-center justify-center gap-5 bg-black/40'>
-                            <div className='flex w-2/3 flex-col items-center justify-center gap-5 rounded-lg bg-white md:h-1/4 md:w-1/3'>  
+                            <div className='flex w-2/3 flex-col items-center justify-center gap-5 rounded-lg bg-white p-5 md:h-1/4 md:w-1/3'>  
                                <p className='text-center font-semibold text-blue-950'>Are you sure to clear cart?!</p>
                             <div className='flex items-center gap-1'>
                                  <button onClick={cancelClear} className='cursor-pointer rounded-lg bg-amber-500 p-2 text-sm text-white'>cancel</button>
