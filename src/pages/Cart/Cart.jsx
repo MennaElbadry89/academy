@@ -74,6 +74,7 @@ export default function Cart(){
 
     const orderData = {
       userId: currentUser.id,
+      // name: currentUser.name,
       email: currentUser.email,
       phone: currentUser.phone || "",
       address: address,

@@ -56,7 +56,7 @@ return(
             isOpen ? "flex" : "hidden",
            " top-15 z-50 absolute left-0 w-full flex-col gap-5 bg-gray-900 p-5",
            " md:static md:flex md:flex-row md:items-center md:justify-between")}>
-            <ul className="flex flex-col gap-5 sm:flex sm:flex-row">
+            <ul className="flex flex-col gap-5 md:flex md:flex-row">
                <li className="hover:font-semibold"><a className="px-5 text-amber-500 hover:text-amber-300" href="/">Home</a></li> 
                <li className="hover:font-semibold"><a className="px-5 text-amber-500 hover:text-amber-300" href="about">About</a> </li>           
                <li className="hover:font-semibold"><a className="px-5 text-amber-500 hover:text-amber-300" href="contact">Contact</a> </li>           
@@ -99,7 +99,7 @@ return(
     <li ><button className="cursor-pointer p-2 text-center text-amber-500 hover:font-bold hover:shadow" onClick={()=>setOpenn(true)}>Logout</button>
               { openn && ( 
                     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/30">
-                      <div className='flex w-1/4 flex-col gap-5 rounded-xl bg-white p-10'>
+                      <div className='flex w-3/4 flex-col gap-5 rounded-xl bg-white p-10 md:w-1/4'>
                       <h2 className='text-center font-semibold text-blue-950'>Are u sure to exit ?!</h2>
                       <div className='flex justify-center gap-2'>  
                       <button className="rounded-xl bg-red-700 p-2 text-sm text-white hover:bg-red-500"
